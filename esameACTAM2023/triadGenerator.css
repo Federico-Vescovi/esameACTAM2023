@@ -1,0 +1,558 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+ul{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+li {
+  margin: 5px;
+  display: table-row;
+  list-style: none;
+}
+
+li * {
+  display: table-cell;
+  padding: 0.5em;
+}
+
+
+
+
+/*CONTAINERS*/
+
+#containerNoteGenerator{
+  height: 67vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+#containerCheckbox1{
+  left:20vw;
+  top: 11vh;
+  border: 1px solid black;
+  height: 350px;
+  width: 60vw;
+  position: relative;
+  border-radius: 5px;
+  padding-top: 50px;
+
+}
+
+#containerCheckbox2{
+  left:22.5vw;
+  top:0vh;
+  height: 35vh;
+  width: 20vw;
+  position: absolute;
+  padding-top: 50px;
+}
+
+#containerCheckbox3{
+  left:42.5vw;
+  top: 0vh;
+  height: 35vh;
+  width: 20vw;
+  position: absolute;
+  padding-top: 50px;
+}
+
+.verticalLine{
+  left:20vw;
+  top:50px;
+  border: 1px solid black;
+  height: 250px;
+  width: 0vw;
+  position: absolute;
+  padding-top: 5px;
+}
+
+
+#containerGuitar{
+  top: 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#emptyContainer{
+  height:59vh;
+  width:1px;
+}
+
+
+#bpmBoxContainer{
+  position:relative;
+  left:-12vw;
+  top:-32px;
+  width:15vw;
+}
+
+
+
+
+
+
+/* various text */
+
+#bpmNumber{
+  position:relative;
+  left:3px;
+  top:2px;
+  font-weight:bold;
+  display: inline;
+}
+
+#displaytriad{
+  top:18vh;
+  position:absolute;
+  font-size: 125px;
+}
+
+#displaystring{
+  top:38vh;
+  position:absolute;
+  font-size: 125px;
+}
+
+
+
+
+
+
+/*mode buttons*/
+
+#modeBox{
+  background: #f6ecfc;
+  height: 50px;
+  position: relative;
+  padding-top: 10px;
+
+}
+#buttonModeBox {
+	width: 700px;
+	margin: 35px auto;
+	position: relative;
+	border-radius: 30px;
+	background: #cdafde;
+  margin-top: 1px;
+}
+
+#btn {
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 350px;
+	height: 100%;
+	background: #440d97;
+	border-radius: 30px;
+	transition: .5s;
+}
+
+.toggleBtn {
+	padding: 30px 40px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+  color:#f6ecfc;
+	outline: none;
+	position: relative;
+	text-align: center;
+}
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+/*buttons with icon*/
+
+.btnIcon{
+  position: relative;
+  width:3vw;
+  height:3vw;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.5s ease, bottom 0.5s ease, left 0.5s ease;
+  transform: translateY(0);
+}
+
+#metronomeIcon{
+ position:fixed;
+ bottom:0vh;
+ left:83vw;
+}
+
+#muteAudioIcon{
+  position:fixed;
+  bottom:0vh;
+  left:87vw;
+}
+
+#toggleFretboardIcon{
+  position:fixed;
+  bottom:0vh;
+  left:91vw;
+}
+
+#practiceReproductionIcon{
+  position:fixed;
+  bottom:0vh;
+  left:95vw;
+  visibility:hidden;
+}
+
+#metronome2{
+  position: absolute;
+  left:0px;
+  visibility:hidden;
+}
+
+#audioIcon2{
+  position: absolute;
+  left:0px;
+  visibility:hidden;
+}
+
+#guitarIcon2{
+  position: absolute;
+  left:0px;
+  visibility:hidden;
+}
+
+#stopIcon{
+  position: absolute;
+  left:0px;
+  visibility:hidden;
+}
+
+
+
+
+
+
+
+
+
+/*checkboxes*/
+
+.containerCheckboxOption {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  margin-left: 20px;
+  height: 20px;
+  width: 60px;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.containerCheckboxOption input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 5px;
+  margin-left: 24px;
+  margin-bottom: 150px;
+  height: 20px;
+  width: 20px;
+  background-color: #EAF0F6;
+  border: 2px solid #440d97;
+  border-radius: 5px;
+}
+
+.containerCheckboxOption input:checked ~ .checkmark {
+  background-color: #440d97;
+}
+
+/* handling checkmark */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.containerCheckboxOption input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.containerCheckboxOption .checkmark:after {
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+
+/*guitar*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+
+:root {
+  --fretboard-height: 300;
+  --number-of-strings: 6;
+  --string-height: 10;
+  --half-string-height: calc(var(--string-height) / 2);
+  --string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
+  --doubleFretmark-position-1: calc(var(--fretboard-height) * 0.30);
+  --doubleFretmark-position-2: calc(var(--fretboard-height) * 0.58);
+  --noteDotOpacity: 1;
+}
+
+
+.fretboard {
+  display: flex;
+  flex-direction: column;
+  background: #686768;
+  width: 100%;
+  min-width: 1500px;
+  height: calc(var(--fretboard-height) * 0.85px);
+  margin-top: 50px;
+  transition: transform 0.5s ease;
+  transform: translateY(100%);
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  border: 0.2px solid transparent; 
+  border-radius: 10px; 
+  overflow: hidden; 
+
+}
+.fretboardHidden {
+  transform: translateY(100%);
+}
+.fretboardVisible {
+  transform: translateY(0);
+}
+.string {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+.string:before {
+    content: '';
+    width: 100%;
+    height: calc(var(--string-height) * 1px);
+    background: linear-gradient(#eee, #999);
+    box-shadow: 76px 3px 10px #686768;
+    z-index: 1;
+    position: absolute;
+    top: 22px;
+    top: calc(var(--string-top-position) * 1px);
+}
+.noteFret {
+    display: flex;
+    flex: 1;
+    border-right: 10px solid;
+    border-image: linear-gradient(to left, #777, #bbb, #777) 1 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.noteFret:first-child {
+    background: #434143;
+    min-width: 76px;
+    border-right: 12px solid;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-image: linear-gradient(to left, #bbb, #fff, #bbb) 1 100%;
+}
+
+.singleFretmark:after, .doubleFretmark:before, .doubleFretmark:after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #aaa;
+}
+
+.singleFretmark:after {
+  top: calc(var(--fretboard-height) / 2 * 0.88px);
+  transform: translate(0, -50%);
+}
+
+.doubleFretmark:before {
+  top: calc(var(--doubleFretmark-position-1) * 1px);
+  transform: translate(-65%, -50%);
+}
+.doubleFretmark:after {
+  top: calc(var(--doubleFretmark-position-2) * 1px);
+  transform: translate(-65%, -50%);
+}
+
+.dot {
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background: black;
+  z-index: 2;
+  color: #eee;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dotText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f6ecfc;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*text, colors and generic shapes*/
+.txt{
+  align-items: center;
+  justify-content: center;
+  font-size: 30px; 
+  padding: 20px 0;
+  font-family:'Tahoma', sans-serif;
+  text-align: center;
+  color:black;
+}
+.lefttxt{
+  font-size: 5vh; 
+  padding: 5px 0;
+  padding-left: 7px;
+  font-family:'Tahoma', sans-serif;
+  color:#FEFAFE;
+  text-align: left;
+  font-weight: 200;
+}
+
+#triadGeneratorRectangle{
+  position:absolute;
+  display: inline-block;
+  top: 55vh;
+  height: 11vh;
+  margin: 70px;
+  width: 35%;
+  padding-top: 3vh;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#triadGeneratorRectangle2{
+  position:absolute;
+  display: none;
+  top: 55vh;
+  height: 11vh;
+  margin: 70px;
+  width: 35%;
+  padding-top: 3vh;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+
+.darkpurple{
+  background-color: #440d97;
+}
+
+.pink{
+  background-color: #f6ecfc;
+}
+
+.pinktext{
+  color:#FEFAFE;
+}
+
+
+
+
+
+
+/* slider */
+#containerSlider{
+  position: relative;
+  top:8vh;
+  left:15vw;
+  width:80%;
+} 
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  left:5vw;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none; /* Remove outline */
+  opacity: 0.75;
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1; /* Fullly visible when the mouse is over the slider */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #440d97;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px;
+  border-radius: 50%;
+  background: #440d97;
+  cursor: pointer; /* Cursor on hover */
+}
