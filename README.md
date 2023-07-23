@@ -9,11 +9,11 @@ The website has two modes: <b>Play-Along Mode</b>, in which different triads get
   <li> Display on which the current string, note and triad type is shown. Such parameters are randomly choosen among a pool determined by the marked checkboxes</li>
   <li> Guitar fretboard with real time display of the current triad</li>
   <li> Metronome whose bpm is modifiable by the value of a slider</li>
-  <li> 3 set of checkboxes that control the possible strings, notes and triads among which the random generation can be done</li>
-  <li> extra button that let the user mute metronome audio </li>
-  <li> extra button that let the user mute triads audio </li>
-  <li> extra button that makes the freatbord appear/disappear from the screen</li>
-  <li> extra button available only in Practice Mode that when clicked will reproduce the current triad audio</li>
+  <li> Three set of checkboxes that control the possible strings, notes and triads among which the random generation can be done</li>
+  <li> Extra button that let the user mute metronome audio </li>
+  <li> Extra button that let the user mute triads audio </li>
+  <li> Extra button that makes the freatbord appear/disappear from the screen</li>
+  <li> Extra button available only in Practice Mode that when clicked will reproduce the current triad audio</li>
 </ul>
 
 <br>
